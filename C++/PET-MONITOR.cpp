@@ -13,12 +13,12 @@ class Date {
         return Day;
     }
     int GetMonth() {
-        return Day;
+        return Month;
     }
     int GetYear() {
-        return Day;
+        return Year;
     }
-    void PrintBD() {
+    void PrintBD() const { // In questo modo la funzione può interagire con una costante
         std::cout<<Day<<"/"<<Month<<"/"<<Year;
     }
     int BDday = Day;
@@ -46,7 +46,7 @@ class Pet {
         std::string name;
         PetRace race;
         int age;
-        Date BirthDate;
+        const Date BirthDate;
         PetState State;
         Pet() {
             name = "";
