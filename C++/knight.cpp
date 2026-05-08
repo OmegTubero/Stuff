@@ -1,6 +1,11 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <stdexcept>
+
+void error(const std::string &s) {
+    throw std::runtime_error(s);
+}
 
 class Enemy {
     public:
@@ -49,6 +54,7 @@ class Characters {
     int attack;
     int energy;
     std::string name;
+    int issave;
 
     public:
     Characters() {
@@ -56,6 +62,13 @@ class Characters {
         attack = 2;
         energy = 20;
         name = "";
+        issave = 0;
+    }
+
+    bool isAsave() {
+        if (issave == 67) {
+            return true;
+        } else return false;
     }
 
     void setname() {
@@ -136,7 +149,7 @@ class Characters {
             if (valid) break;
             int s = 0;
             std::cout<<"Health: "<<health<<"    Energy: "<<energy<<"\n";
-            std::cout<<"What you want to do?\n1. Attack    2. Shield your self\n3. Rest    4. Save\n5. Quit\nSelection: ";
+            std::cout<<"What you want to do?\n1. Attack    2. Shield yourself\n3. Rest    4. Save\n5. Quit\nSelection: ";
             std::cin>>s;
             switch(s) {
                 case 1:
@@ -152,6 +165,7 @@ class Characters {
                     break;
                 
                 case 4: {
+                    issave = 67;
                     std::ofstream save{"save.dat", std::ios::binary};
                     save.write((char*)this, sizeof(Characters));
                     enemy.savegame(save);
@@ -185,7 +199,14 @@ main() {
         case 2:
             std::ifstream load{"save.dat", std::ios::binary};
             load.read(reinterpret_cast<char*>(&Campo), sizeof(Characters));
+            if (!Campo.isAsave() || load.bad()) { // bad indica se la lettura è fallita per un motivo grave
+                error("An error has occurred when loading the savefile");
+                return 1;
+            }
             load.read(reinterpret_cast<char*>(&Job), sizeof(Characters));
+            if (load.eof()) { //Vero se ha raggiunto la fine del file
+                std::cout<<"Save file loaded\n";
+            }
             Campo.doSMT(Job);
             break;
     }
