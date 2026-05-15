@@ -36,7 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $conn->rollback(); // Annullo le modifiche
         }
 
-        $register_user_query->close();
         } catch (mysqli_sql_exception $e) {
 
             if ($e->getCode() == 1062) {
