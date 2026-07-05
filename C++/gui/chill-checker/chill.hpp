@@ -26,7 +26,7 @@ class FinestraChill : public wxFrame {
 
                 SizerChill->Add(TastoChill,0,wxALIGN_CENTER | wxALL,5);
                 // Tipo evento, puntatore alla funzione membro da eseguire, Dice a wxWidgets che deve essere chiamato sull'istanza corrente  del frame
-                TastoChill->Bind(wxEVT_BUTTON, &FinestraChill::OnButtonClicked, this);
+                TastoChill->Bind(wxEVT_BUTTON, &FinestraChill::ControlloDelChilling, this);
                 // Aggiungiamo uno spazio vuoto elastico in basso (spinge verso l'alto)
                 SizerChill->AddStretchSpacer(1);
                 // Assegno il sizer al pannello
@@ -36,8 +36,8 @@ class FinestraChill : public wxFrame {
     private:
             wxButton* TastoChill;
             wxTextCtrl* CasellaTestoChill;
-
-            void OnButtonClicked(wxCommandEvent& event) {
+            // Creo l'event handler
+            void ControlloDelChilling(wxCommandEvent &event) {
                 // Prendiamo il contenuto della text box
                 wxString InputUtente = CasellaTestoChill->GetValue();
                 // Puliamo eventuali spazi vuoti prima e dopo
