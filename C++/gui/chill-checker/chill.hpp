@@ -5,11 +5,8 @@
 
 // Definisco la finestra
 class FinestraChill : public wxFrame {
-    public:
-        FinestraChill()
-            // Il primo parametro indica il padre, il secondo indica che ID assegnargli in qeusto caso lo fa automaticamente, il terzo è il titolo della finestra, il quarto indica dove far apparire la finestra, il quinto la dimensone 
-            : wxFrame(NULL, wxID_ANY,"Chill checker",wxDefaultPosition,wxSize(400, 300))
-            {   
+    public: // Creazione del costruttore della classe FinestraChill che utilizza il framework grafico wxWidgets, Il primo parametro indica il padre, il secondo indica che ID assegnargli in qeusto caso lo fa automaticamente, il terzo è il titolo della finestra, il quarto indica dove far apparire la finestra, il quinto la dimensone 
+            FinestraChill() : wxFrame(NULL, wxID_ANY,"Chill checker",wxDefaultPosition,wxSize(400, 300)) {   
                 // Creo un pannello necessario per il testo
                 wxPanel* PannelloChill = new wxPanel(this,wxID_ANY);
 
@@ -43,13 +40,13 @@ class FinestraChill : public wxFrame {
             void OnButtonClicked(wxCommandEvent& event) {
                 // Prendiamo il contenuto della text box
                 wxString InputUtente = CasellaTestoChill->GetValue();
-                // Puliamo eventuali spazi vuoti prima e dopo (opzionale ma molto utile)
+                // Puliamo eventuali spazi vuoti prima e dopo
                 InputUtente.Trim(true).Trim(false);
                 // Eseguiamo il controllo (ignorando maiuscole/minuscole con CmpNoCase), se restituiscono 0, significa che la differenza è zero, quindi le stringhe sono identiche
                 if (InputUtente.CmpNoCase("si") == 0) {
                     wxMessageBox("Stai tutto chill twin","Bravo",wxOK | wxICON_INFORMATION);
                 } else if (InputUtente.CmpNoCase("no") == 0) {
-                    wxMessageBox("Datti una reffata e chilla twin","Male",wxOK | wxICON_INFORMATION);
+                    wxMessageBox("Datti una reffata e chilla twin","Male male",wxOK | wxICON_INFORMATION);
                 } else wxMessageBox("Che stai a di' twin?","Uh?",wxOK | wxICON_INFORMATION);
             }
 };
