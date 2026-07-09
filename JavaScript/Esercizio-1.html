@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 1</title>
+    </head>
+<script>
+    let giorno_settimana = "lunedì";
+
+    function Convalida_Prezzo(eta) {
+        if (giorno_settimana == "mercoledì" && eta >= 12) {
+            return 6;
+        } else if (eta < 12) {
+            return 5;
+        } else if (eta >= 65) {
+            return 7;
+        } else {
+            return 10;
+        }
+    }
+
+    let eta_cliente1 = 19;
+    let eta_cliente2 = 9;
+    let eta_cliente3 = 67;
+
+    // Giorno normale
+    console.log("Benvenuto! lei ha " + eta_cliente1 + " anni, quindi il biglietto le viene " + Convalida_Prezzo(eta_cliente1) + " EURO");
+    console.log("Benvenuto! lei ha " + eta_cliente2 + " anni, quindi il biglietto le viene " + Convalida_Prezzo(eta_cliente2) + " EURO");
+    console.log("Benvenuto! lei ha " + eta_cliente3 + " anni, quindi il biglietto le viene " + Convalida_Prezzo(eta_cliente3) + " EURO");
+    giorno_settimana = "mercoledì";
+    console.log("Benvenuto! lei ha " + eta_cliente1 + " anni, ed oggi è mercoledì, quindi il biglietto le viene " + Convalida_Prezzo(eta_cliente1) + " EURO");
+</script>
+<body>
+<h1>Il Bigliettaio Digitale</h1>
+Immagina di dover scrivere il codice che calcola il prezzo del biglietto del cinema per un cliente in base alla sua età e al giorno della settimana.<br>
+<h3>Le Regole del Cinema:</h3>
+<strong>Prezzo Base:</strong> Il biglietto standard costa 10€.<br>
+<strong>Sconto Bambini:</strong> I bambini sotto i 12 anni pagano la metà (5€).<br>
+<strong>Sconto Anziani:</strong> Gli over 65 (dai 65 anni in su) hanno uno sconto del 30% (quindi pagano 7€).<br>
+<strong>Promozionale:</strong> Se è mercoledì, c'è uno sconto speciale per tutti: il biglietto base scende a 6€ (ma attenzione: lo sconto per bambini resta comunque bloccati a 5€).
+</body>
+</html>
