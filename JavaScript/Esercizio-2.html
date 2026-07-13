@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 2</title>
+    </head>
+<script>
+    function Canzone (titolo, autore, durata) { //Creo un Object Constructor
+        this.titolo = titolo.toUpperCase(); //Con toUpperCase() converto i caratteri della stringa in caratteri maiuscoli
+        this.autore = autore.toUpperCase();
+        this.durata = durata;
+    }
+
+    function StampaTraccie(Playlist) {
+        Playlist.forEach((traccia) =>{ //Stampa dell'array con il forEach()
+            console.log("Titolo: ", traccia.titolo, "\nAutore: ", traccia.autore, "\nDurata in secondi: ", traccia.durata);
+        });
+    }
+
+    let Playlist = []; //Creo un array
+
+    const Canzone1 = new Canzone("Come Alive","Sān-Z",243); //Uso il costruttore per creare un istanza
+    const Canzone2 = new Canzone("Original Me","Sān-Z",223);
+    const Canzone3 = new Canzone("ReDreaming Angel","Sān-Z",190);
+    const Canzone4 = new Canzone("DAMIDAMI","Sān-Z",191);
+
+    Playlist.push(Canzone1); //Metto l'istanza alla fine dell'array
+    Playlist.push(Canzone2);
+    Playlist.push(Canzone3);
+    Playlist.push(Canzone4);
+
+    console.log("Ecco le canzoni della playlist");
+
+    StampaTraccie(Playlist);
+
+    const TrovaCanzoniBrevi = function(Playlist) {
+        return Playlist.filter(traccia => traccia.durata <= 200);
+    }
+
+    let PlaylistCanzoniBrevi = TrovaCanzoniBrevi(Playlist);
+
+    console.log("Ecco le canzoni brevi (sotto i 200 secondi) della playlist");
+
+    StampaTraccie(PlaylistCanzoniBrevi);
+</script>
+<body style="overflow: hidden;">
+<h1>Il Gestore di Playlist</h1>
+Dovrai creare un costruttore per generare delle canzoni, manipolare i testi con i metodi delle stringhe, organizzare le canzoni in un array e usare una Function Expression con i metodi degli array per filtrare la musica.<br>
+Crea una funzione costruttore chiamata Canzone che accetta tre parametri: titolo, artista, e durata (in secondi, es: 210).
+All'interno del costruttore, memorizza i dati, ma usa un metodo delle stringhe per fare in modo che il titolo e l'artista vengano salvati sempre in tutto maiuscolo.<br>
+Crea un array chiamato playlist. Usa il costruttore Canzone con la parola chiave new per creare almeno 4 canzoni e inseriscile nell'array (puoi usare il metodo degli array .push()).
+Includi canzoni con durate diverse: qualcuna sotto i 3 minuti (180 secondi) e qualcuna più lunga.
+Scrivi una Function Expression (assegnandola a una variabile) chiamata trovaCanzoniBrevi che deve:
+<ul>
+<li>Accettare come parametro l'array della playlist.</li>
+<li>Usare il metodo degli array .filter() per restituire un nuovo array contenente solo le canzoni che durano meno di 200 secondi.</li>
+</ul>
+<strong>Aprire la console del browser con F12 per vedere l'output del codice</strong>
+<div style="display: flex; flex-direction: column; width: 100%; align-items: center;">
+<h2>Music Corner</h2>
+<h4>Come Alive</h4>
+<audio controls preload="auto">
+  <source src="https://www.dropbox.com/scl/fi/3p15b0vj3tjc292vuykpb/Come-Alive.mp3?rlkey=lqn7v7lmvs446aws77w7d9z8u&st=r2xw003s&dl=1" type="audio/mpeg">
+</audio>
+<br><h4>Original Me</h4>
+<audio controls preload="auto">
+  <source src="https://www.dropbox.com/scl/fi/e58dmknidzpjbhyz882ah/Original-Me.mp3?rlkey=rapm6sgowlgsw4cdx9g8vpcar&st=swelagsv&dl=1" type="audio/mpeg">
+</audio>
+<br><h4>ReDreaming Angel</h4>
+<audio controls preload="auto">
+  <source src="https://www.dropbox.com/scl/fi/93fljqpldykbty4xcqwu0/ReDreaming-Angel.mp3?rlkey=kdjsb1a37y7bzd7iz3tyjairb&st=hrpjjx2y&dl=1" type="audio/mpeg">
+</audio>
+<br><h4>DAMIDAMI</h4>
+<audio controls preload="auto">
+  <source src="https://www.dropbox.com/scl/fi/13x8h838kmafz7bar3idt/DAMIDAMI.mp3?rlkey=t82xl3vwbej8i1aibhwp1v4qh&st=op9dnklo&dl=1" type="audio/mpeg">
+</audio>
+</div>
+</body>
+</html>
