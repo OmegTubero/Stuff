@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 3</title>
+    </head>
+<script>
+    class ElementoMultimediale {
+        constructor(titolo, durata) {
+            this.titolo = titolo.toUpperCase();
+            this.durata = durata;
+        }
+
+        FormattaTempo() {
+            this.durata_m = this.durata / 60;
+            this.durata_m = Math.trunc(this.durata_m);
+            this.durata_s = this.durata % 60;
+            return `${this.durata_m}:${this.durata_s}`;
+        }
+
+        MostraDettagli() {
+            console.log("Titolo:", this.titolo, "\nDurata:", this.FormattaTempo());
+        }
+    }
+
+    class Canzone extends ElementoMultimediale {
+        constructor(titolo, durata, autore) {
+            super(titolo,durata);
+            this.autore = autore.toUpperCase();
+        }
+
+        MostraDettagli()  {
+            console.log("Titolo:", this.titolo, "\nDurata:", this.FormattaTempo(), "\nAutore:", this.autore);
+        }
+    }
+
+    class Podcast extends ElementoMultimediale {
+        constructor(titolo, durata, ospite, episodio) {
+            super(titolo,durata);
+            this.ospite = ospite.toUpperCase();
+            this.episodio = episodio;
+        }
+
+        MostraDettagli()  {
+            console.log("Titolo:", this.titolo, "\nDurata:", this.FormattaTempo(), "\nEpisodio:", this.episodio, "\nOspite:", this.ospite);
+        }
+    }
+
+    const Canzone1 = new Canzone("Come Alive", 243, "Sān-Z");
+
+    const Podcast1 = new Podcast("Imparare C", 4020, "Terry A. Davis", 1); 
+
+    let Catalogo = [Canzone1, Podcast1];
+
+    Catalogo.forEach(el => el.MostraDettagli());
+</script>
+<body style="overflow: hidden;">
+<h1>Il Gestore di Playlist</h1>
+Dovrai creare un costruttore per generare delle canzoni, manipolare i testi con i metodi delle stringhe, organizzare le canzoni in un array e usare una Function Expression con i metodi degli array per filtrare la musica.
+
+<h3>Il Costruttore (Constructor)</h3>
+Crea una funzione costruttore chiamata Canzone che accetta tre parametri: titolo, artista, e durata (in secondi, es: 210).
+All'interno del costruttore, memorizza i dati, ma usa un metodo delle stringhe per fare in modo che il titolo e l'artista vengano salvati sempre in tutto maiuscolo (es. .toUpperCase()), indipendentemente da come vengono scritti all'inizio.
+
+<h3>L'Array di Oggetti</h3>
+Crea un array chiamato playlist. Usa il costruttore Canzone con la parola chiave new per creare almeno 4 canzoni e inseriscile nell'array (puoi usare il metodo degli array .push()).
+Includi canzoni con durate diverse: qualcuna sotto i 3 minuti (180 secondi) e qualcuna più lunga.
+
+<h3>La Function Expression & Array Methods</h3>
+Scrivi una Function Expression (assegnandola a una variabile) chiamata trovaCanzoniBrevi.
+Questa funzione deve:
+
+Accettare come parametro l'array della playlist.
+
+Usare il metodo degli array .filter() per restituire un nuovo array contenente solo le canzoni che durano meno di 200 secondi.<br><br>
+
+<strong>Aprire la console del browser con F12 per vedere l'output del codice</strong>
+</body>
+</html>
