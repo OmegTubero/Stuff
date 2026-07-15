@@ -4,27 +4,27 @@
         <title>Esercizio 3</title>
     </head>
 <script>
-    class ElementoMultimediale {
+    class ElementoMultimediale { //Creo una classe
         constructor(titolo, durata) {
             this.titolo = titolo.toUpperCase();
             this.durata = durata;
         }
 
-        FormattaTempo() {
+        FormattaTempo() { //Funzione per formattare il tempo
             this.durata_m = this.durata / 60;
             this.durata_m = Math.trunc(this.durata_m);
             this.durata_s = this.durata % 60;
             return `${this.durata_m}:${this.durata_s}`;
         }
 
-        MostraDettagli() {
+        MostraDettagli() { //Funzione per msotrare i dettagli
             console.log("Titolo:", this.titolo, "\nDurata:", this.FormattaTempo());
         }
     }
 
-    class Canzone extends ElementoMultimediale {
+    class Canzone extends ElementoMultimediale { //Creo una sottoclasse
         constructor(titolo, durata, autore) {
-            super(titolo,durata);
+            super(titolo,durata); //Con super gli faccio ereditare i parametri del costruttore della classe padre
             this.autore = autore.toUpperCase();
         }
 
@@ -51,7 +51,7 @@
 
     let Catalogo = [Canzone1, Podcast1];
 
-    Catalogo.forEach(el => el.MostraDettagli());
+    Catalogo.forEach(el => el.MostraDettagli()); //ForEach per scorrere il catalogo e mostrare i dettagli di ogni elemento
 </script>
 <body style="overflow: hidden;">
 <h1>Il Gestore di Playlist</h1>
