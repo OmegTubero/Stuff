@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 4</title>
+    </head>
+<script>
+    // Prova callback
+    function somma(a, b, callback) {
+        console.log("Sto sommando i numeri...")
+        let risultato = a + b;
+        setTimeout(() => {
+            callback(risultato);
+        }, 1500);
+    }
+
+    somma(60, 7, numero => console.log("Il risultato è ", numero));
+
+    function controlloEta(eta) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (eta > 17) {
+                    resolve("Accesso consentito!");
+                } else {
+                    reject("Età non valida, accesso rifiutato");
+                }
+            }, 3000);
+        });
+    }
+
+    /* Vecchio metodo di utilizzo delle promise 
+    controlloEta(20)
+        .then(risposta => console.log(risposta))
+        .catch(errore => console.log(errore));
+
+    controlloEta(10)
+        .then(risposta => console.log(risposta))
+        .catch(errore => console.log(errore));
+    */
+
+    // Nuovo metodo async e await
+   async function eseguiContollo() {
+    try {
+        const controllo1 = await controlloEta(20);
+        console.log(controllo1);
+
+        const controllo2 = await controlloEta(10);
+        console.log(controllo2);
+    } catch (errore) {
+        console.log(errore);
+    }
+   }
+   eseguiContollo();
+</script>
+<body style="overflow: hidden;">
+<h1>Test Callback e Promise</h1>
+<strong>Aprire la console del browser con F12 per vedere l'output del codice</strong>
+</body>
+</html>
