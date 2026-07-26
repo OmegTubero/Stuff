@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Esercizio 5</title>
+</head>
+<script>
+    // Creo una arrowfunction asincrona
+    const cercaPokemon = async (NomeoId) => {
+        try {
+            console.log("Ricerca del pokèmon in corso...");
+
+            const url = `https://pokeapi.co/api/v2/pokemon/${NomeoId}`;
+            // Faccio fetch dell'API
+            const risposta = await fetch(url);
+            // Controllo se è possibile comunicarci
+            if (!risposta.ok) {
+                throw new error(`Impossibile comunicare con il server: ${risposta.status}`);
+            }
+            // Inserisco la risposta in una variabile e la converto in json
+            const pokemon = await risposta.json();
+            // Simulo un attesa
+            setTimeout(() => {
+                console.log("Pokèmon trovato!");
+                console.log(`Nome: ${pokemon.name}`);
+                console.log(`Peso: ${pokemon.weight}`);
+                console.log(`Tipo: ${pokemon.types[0].type.name}`);
+            }, 1500);
+        // Stampo l'eventuale errore
+        } catch (errore) {
+            console.error("Si è verificato un errore:", errore.message);
+        }
+    };
+    cercaPokemon(4);
+</script>
+<body>
+<h1>Pokèdex</h1>
+Vogliamo creare una funzione asincrona che cerca i dati di un Pokémon usando un'API pubblica e gratuita chiamata PokeAPI.
+
+L'URL base per cercare un Pokémon per nome o per ID è questo:
+[https://pokeapi.co/api/v2/pokemon/](https://pokeapi.co/api/v2/pokemon/) (seguito dal nome o dall'ID).<br><br>
+<strong>Aprire la console del browser con F12 per vedere l'output del codice</strong>
+</body>
+</html>
